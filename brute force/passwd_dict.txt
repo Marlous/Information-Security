@@ -1,0 +1,6 @@
+passwd
+password
+root
+admin
+12345
+123456
